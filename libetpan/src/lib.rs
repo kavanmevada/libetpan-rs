@@ -1,20 +1,20 @@
 #[cfg(unix)]
-pub type Pid = example_sys::unix::pid_t;
+pub type Pid = libetpan_sys::unix::pid_t;
 
 #[cfg(target_os = "windows")]
-pub type Pid = example_sys::windows::DWORD;
+pub type Pid = libetpan_sys::windows::DWORD;
 
 #[cfg(unix)]
 pub fn pid() -> Pid {
     unsafe {
-        example_sys::unix::getpid()
+        libetpan_sys::unix::getpid()
     }
 }
 
 #[cfg(target_os = "windows")]
 pub fn pid() -> Pid {
     unsafe {
-        example_sys::windows::GetCurrentProcessId()
+        libetpan_sys::windows::GetCurrentProcessId()
     }
 }
 
